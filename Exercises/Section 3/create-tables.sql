@@ -1,5 +1,5 @@
 -- Create DB
-CREATE DB movies;
+CREATE DATABASE movies;
 
 -- Create tables
 
