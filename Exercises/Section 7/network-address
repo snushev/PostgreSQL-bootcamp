@@ -1,0 +1,39 @@
+-- Network address data type
+
+ -- create sample table
+CREATE TABLE table_netaddr(
+    id SERIAL PRIMARY KEY,
+    ip INET
+);
+
+-- insert some values
+INSERT INTO 
+    table_netaddr(ip)
+VALUES
+    ('4.35.221.243'),
+    ('192.168.0.12'),
+    ('123.243.17.1'),
+    ('1.1.2.4');
+
+SELECT * FROM table_netaddr;
+
+SELECT 
+    ip,
+    set_masklen(ip, 24) AS inet_24
+FROM table_netaddr;
+
+-- convert inet to cidr type
+SELECT 
+    ip,
+    set_masklen(ip, 24) AS inet_24,
+    set_masklen(ip::cidr, 24) AS cidr_24
+FROM table_netaddr;
+
+-- analyze another network like /27, /28
+SELECT 
+    ip,
+    set_masklen(ip, 24) AS inet_24,
+    set_masklen(ip::cidr, 24) AS cidr_24,
+    set_masklen(ip::cidr, 27) AS cidr_27,
+    set_masklen(ip::cidr, 28) AS cidr_28
+FROM table_netaddr;
