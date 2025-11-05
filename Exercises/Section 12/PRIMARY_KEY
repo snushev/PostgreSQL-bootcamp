@@ -1,0 +1,21 @@
+-- PRIMARY KEY constraint
+CREATE TABLE table_items(
+    item_id INTEGER PRIMARY KEY,
+    item_name VARCHAR(100) NOT NULL
+);
+
+INSERT INTO 
+    table_items(
+        item_id, 
+        item_name
+    )
+VALUES
+    (1, 'table'),
+    (2, 'chair');
+
+-- dropping a primary key and set it on existing table
+ALTER TABLE table_items
+DROP CONSTRAINT table_items_pkey;
+
+ALTER TABLE table_items
+ADD PRIMARY KEY (item_id);
