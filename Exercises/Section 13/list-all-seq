@@ -1,0 +1,4 @@
+-- list all existing sequences
+SELECT relname sequence_name
+FROM pg_class
+WHERE relkind = 'S';
